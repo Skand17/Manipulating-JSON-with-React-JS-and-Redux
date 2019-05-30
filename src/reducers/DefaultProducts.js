@@ -9,7 +9,6 @@ export default function(state = initialState, action){
     switch(action.type){
         case DEFAULT_JSON : 
         return {
-            
             ...state
         }
         default :

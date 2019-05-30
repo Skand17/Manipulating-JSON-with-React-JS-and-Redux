@@ -7,6 +7,28 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.form-group.editable-block label {
+  padding-left: 11px;
+  vertical-align: middle;
+}
+
+.error-message > .c-pink {
+  color: red;
+  font-weight: 600;
+}
+
+button.btn.submit-btn {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.p-r-10{
+  padding-right: 30px;  
+}
+
+label.price-block {
+  display: block;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;

@@ -19,8 +19,16 @@
   color: white;
 }
 
+label.price-block {
+  display: block;
+}
+
 .App-link {
   color: #61dafb;
+}
+
+.p-r-10{
+  padding-right: 10px;  
 }
 
 @keyframes App-logo-spin {

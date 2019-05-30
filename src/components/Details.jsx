@@ -4,13 +4,12 @@ import {getProducts}  from '../actions/getProducts'
 import {NavLink} from 'react-router-dom'
 
 class Details extends Component {
-
+    
     componentDidMount(){
         this.props.dispatch(getProducts())
     }
 
     render() {
-
         return (
             <div>
                 <div className="table-wrapper"> 
