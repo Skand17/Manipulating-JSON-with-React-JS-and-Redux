@@ -25,6 +25,7 @@ class Details extends Component {
             }   
         ]
 
+        console.log(UpdatedArray)
 
         return (
             <div>

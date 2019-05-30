@@ -69,6 +69,7 @@ class editDetails extends Component {
                         pricerange : "",
                     }}
                     onSubmit={(values, { resetForm, props }) => {
+
                         var priceTier = values.pricetier
                         var editable = values.editable
 
@@ -110,7 +111,7 @@ class editDetails extends Component {
                                                 <label className="price-block">Price Tier</label>
                                                 <Field type="radio" name="pricetier" value="budget"></Field>
                                                 <label className="p-r-10">Budget</label>	
-                                                <Field type="radio" name="pricetier"  value="permier" ></Field>	
+                                                <Field type="radio" name="pricetier"  value="permier"></Field>	
                                                 <label>Premier</label>
                                             </div>
                                             <div className="form-group">
