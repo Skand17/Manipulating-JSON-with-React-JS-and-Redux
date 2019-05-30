@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { Formik, Field} from "formik";
 import {connect } from 'react-redux'
 import InputField from '../helpers/inputField'
-
+import swal from 'sweetalert';
+import {NavLink} from 'react-router-dom'
 import {updateDetails} from '../actions/getProducts'
 import customSelect from '../helpers/reactSelect'
 import {  Budgetoptions } from  "../helpers/seletOptions"
@@ -62,25 +63,31 @@ class editDetails extends Component {
                         name : "",
                         weight : "",
                         availability : "",
+                        pricetier : "",
                         url : "",
+                        editable : "",
                         pricerange : "",
                     }}
                     onSubmit={(values, { resetForm, props }) => {
-                        this.updateValue(values)
+                        var priceTier = values.pricetier
+                        var editable = values.editable
+
+                            if(priceTier == ''){
+                                swal('Price Tier is Missing')
+                            }
+                            else if(editable == false){
+                                swal('Editable Should be checked')
+                            }
+                            else
+                            {
+                                this.updateValue(values)
+                            }
                     }}
                     validationSchema={validation}
-                    render={({
-                        errors, 
-                        touched,
-                        isValidating,
-                        isValid,
-                        handleSubmit,
-                        setFieldValue,
-                        values
-                
-                    }) => (
+                    render={({ handleSubmit, setFieldValue,}) => (
                             <div className="form-wrapper">
                                 <h2 className="edit-form">Edit Form.</h2>
+                                <NavLink to="/" className="back-link">Back</NavLink>
                                 <form onSubmit={handleSubmit}>
                                         <div className="form-wrapper">
                                             <div className="form-group">
@@ -101,14 +108,14 @@ class editDetails extends Component {
                                             </div>
                                             <div className="form-group">
                                                 <label className="price-block">Price Tier</label>
-                                                <Field type="radio" name="pricetier" value="budget" onChange={this.changeRange.bind(this)}></Field>
+                                                <Field type="radio" name="pricetier" value="budget"></Field>
                                                 <label className="p-r-10">Budget</label>	
-                                                <Field type="radio" name="pricetier"  value="permier" onChange={this.changeRange.bind(this)}></Field>	
+                                                <Field type="radio" name="pricetier"  value="permier" ></Field>	
                                                 <label>Premier</label>
                                             </div>
                                             <div className="form-group">
                                                 <label>Price Range</label>
-                                                <Field name="pricerange" component={customSelect} options={this.state.dropdown ? Premireoptions  : Budgetoptions} onChange={(e) => { this.changeRangeValue(e, setFieldValue)}}  className="form-control"></Field>	
+                                                <Field name="pricerange" component={customSelect} options={Premireoptions} onChange={(e) => { this.changeRangeValue(e, setFieldValue)}}  className="form-control"></Field>	
                                             </div>
                                             <div className="form-group editable-block">
                                                 <Field type="checkbox" name="editable"></Field>	

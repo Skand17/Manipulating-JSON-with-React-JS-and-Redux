@@ -25,11 +25,12 @@ class Details extends Component {
             }   
         ]
 
+
         return (
             <div>
                 <div className="table-wrapper"> 
                 <table className="table">
-                    <tbody>
+                   
                         <thead>
                             <tr>
                                 <th width="50%">Name</th>
@@ -38,17 +39,18 @@ class Details extends Component {
                                 <th width="10%">IsEditable</th>
                             </tr>
                         </thead>
-                        {
-                           this.props.defaultProduct.product_listing.map( (item, index) => {
-                            return  <tr>
-                                        <td key={index}>{item.name}</td>
-                                        <td >{item.weight}</td>
-                                        <td>{item.availability}</td>
-                                        <td>{item.isEditable  ?  <NavLink to={'/editDetails/' + item.id }>Edit</NavLink> : ''}</td>
-                                    </tr>
-                            })  
-                        }
-                    </tbody>
+                        <tbody>
+                            {
+                                this.props.defaultProduct.product_listing.map( (item, index) => {
+                                    return  <tr>
+                                                <td key={index}>{item.name}</td>
+                                                <td >{item.weight}</td>
+                                                <td>{item.availability}</td>
+                                                <td>{item.isEditable  ?  <NavLink className="edit-link" to={'/editDetails/' + item.id }>Edit</NavLink> : ''}</td>
+                                            </tr>
+                                    })  
+                            }
+                        </tbody>
                 </table>
                 </div>
             </div>

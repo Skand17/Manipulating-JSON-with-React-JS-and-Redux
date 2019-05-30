@@ -4,6 +4,7 @@ import { Switch } from "react-router-dom";
 import { BrowserRouter as Router, Route} from "react-router-dom";
 import  store from './store'
 
+
 // Components
 import details from './components/Details'
 import Editdetails from './components/editDetails'

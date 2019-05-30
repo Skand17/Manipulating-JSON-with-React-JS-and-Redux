@@ -16,9 +16,30 @@ h2.edit-form {
   padding: 35px 0 10px 0;
 }
 
+a.back-link.active {
+  display: block;
+  padding: 0 0 20px 0;
+}
+
 .error-message > .c-pink {
   color: red;
   font-weight: 600;
+}
+
+.table-wrapper {
+  max-width: 700px;
+  margin: 100px auto;
+}
+
+a.edit-link {
+  text-align: center;
+  display: block;
+  background-color: #000000;
+  padding: 9px;
+  color: #ffffff;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.100em;
 }
 
 button.btn.submit-btn {
