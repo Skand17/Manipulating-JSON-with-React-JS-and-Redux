@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
 import { Formik, Field} from "formik";
+import {connect } from 'react-redux'
 import InputField from '../helpers/inputField'
+
+import {updateDetails} from '../actions/getProducts'
 import customSelect from '../helpers/reactSelect'
 import {  Budgetoptions } from  "../helpers/seletOptions"
 import {  Premireoptions } from  "../helpers/seletOptions"
 import {validation } from "../helpers/Validation"
+
 
 class editDetails extends Component {
 
@@ -16,17 +20,33 @@ class editDetails extends Component {
     }
     
 
+    // Select2 setFieldValue
     changeRangeValue = (pricerange, setFieldValue) => {
         setFieldValue('pricerange', pricerange, true);
     }	
 
+    // Update Value
+
+    updateValue(values){
+
+        var responseData = {
+            name : values.name,
+            Weight : values.weight,
+            availability :  values.availability,
+            IsEditable : values.editable
+         }
+         
+         this.props.dispatch(updateDetails(responseData))
+         this.props.history.push('/')   
+    }
+
     changeRange(e){
-        if(e.target.value == 'budget'){
+        if(e.target.value === 'budget'){
             this.setState({
                 dropdown : false
             })
         }
-        else if(e.target.value == 'permier'){
+        else if(e.target.value === 'permier'){
             this.setState({
                 dropdown : true
             })
@@ -46,7 +66,7 @@ class editDetails extends Component {
                         pricerange : "",
                     }}
                     onSubmit={(values, { resetForm, props }) => {
-                        console.log(values)
+                        this.updateValue(values)
                     }}
                     validationSchema={validation}
                     render={({
@@ -60,6 +80,7 @@ class editDetails extends Component {
                 
                     }) => (
                             <div className="form-wrapper">
+                                <h2 className="edit-form">Edit Form.</h2>
                                 <form onSubmit={handleSubmit}>
                                         <div className="form-wrapper">
                                             <div className="form-group">
@@ -93,7 +114,7 @@ class editDetails extends Component {
                                                 <Field type="checkbox" name="editable"></Field>	
                                                 <label>Is Editable</label>
                                             </div>
-                                            <button disabled className="btn submit-btn">Submit</button>
+                                            <button  className="btn submit-btn">Submit</button>
                                         </div>
                                     </form> 
                             </div>  
@@ -104,4 +125,10 @@ class editDetails extends Component {
     }
 }
 
-export default editDetails;
+const mapStateToProps = (state) => {
+    return {
+        ...state
+    }
+}
+
+export default connect(mapStateToProps)(editDetails);

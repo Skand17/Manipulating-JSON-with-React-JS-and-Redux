@@ -12,6 +12,10 @@ body {
   vertical-align: middle;
 }
 
+h2.edit-form {
+  padding: 35px 0 10px 0;
+}
+
 .error-message > .c-pink {
   color: red;
   font-weight: 600;
